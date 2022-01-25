@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kfejk by Retried</title>
+    <link rel="stylesheet" th:href="@{reset.css}"/>
+    <link rel="stylesheet" th:href="@{login.css}"/>
+    <link rel="stylesheet" th:href="@{style.css}"/>
+    <link href='https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="logo">
+            <a href="/">
+                <img th:src="@{logo.png}" alt="LOGO"/>
+            </a>
+        </div>
+        <div class="login-logout">
+        </div>
+    </nav>
+    <div class="log">
+        <div class="login-form">
+            <!-- success message -->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">You've successfully registered
+                    to our awesome app!</div>
+            </div>
+            <div class="login-top">
+            <h1>Registration</h1>
+            </div>
+            <form th:action="@{/registration}" method="post" th:object="${user}" class="login">
+                <div class="in-data">
+                    <label class="control-label" for="firstName"> First Name </label>
+                    <input id="firstName" class="form-control" th:field="*{firstName}"
+                           required autofocus="autofocus" />
+                </div>
+
+                <div class="in-data">
+                    <label class="control-label" for="lastName"> Last Name </label> <input
+                        id="lastName" class="form-control" th:field="*{lastName}"
+                        required autofocus="autofocus" />
+                </div>
+
+                <div class="in-data">
+                    <label class="control-label" for="email"> Email </label> <input
+                        id="email" class="form-control" th:field="*{email}" required
+                        autofocus="autofocus" />
+                </div>
+
+                <div class="in-data">
+                    <label class="control-label" for="password"> Password </label> <input
+                        id="password" class="form-control" type="password"
+                        th:field="*{password}" required autofocus="autofocus" />
+                </div>
+
+                <div class="submit">
+                    <button type="submit" class="btn btn-success">Register</button>
+                </div>
+            </form>
+            <span>Already registered? <a href="/" th:href="@{/login}" class="reg-link">Login
+								here</a></span>
+        </div>
+    </div>
+    <footer class="footer">
+        <a href="https://github.com/Retried" class="footer-content">&copy; Doga Company</a>
+    </footer>
+</body>
+</html>

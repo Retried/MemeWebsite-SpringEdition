@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kfejk by Retried</title>
+    <link rel="stylesheet" th:href="@{reset.css}"/>
+    <link rel="stylesheet" th:href="@{login.css}"/>
+    <link rel="stylesheet" th:href="@{style.css}"/>
+    <link href='https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="logo">
+            <a href="/">
+                <img th:src="@{logo.png}" alt="LOGO"/>
+            </a>
+        </div>
+        <div class="login-logout">
+        </div>
+    </nav>
+    <div class="log">
+        <div class="login-form">
+            <div class="login-top">
+            <h1> User Login Page </h1>
+            </div>
+            <form th:action="@{/login}" method="post" class="login">
+
+                <!-- error message -->
+                <div th:if="${param.error}" >
+                    <div class="alert alert-danger">Invalid username or
+                        password.</div>
+                </div>
+
+                <!-- logout message -->
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">You have been logged out.</div>
+                </div>
+
+                <div class = "in-data" >
+                    <label for ="username"> Username: </label>
+                    <input type="text" class = "form-control" id ="username" name = "username"
+                           placeholder="Enter Email ID" autofocus="autofocus">
+                </div>
+
+                <div class="in-data">
+                    <label for="password">Password:</label><input type="password"
+                                                                   id="password" name="password" class="form-control"
+                                                                   placeholder="Enter Password" />
+                </div>
+
+                <div class="submit">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input type="submit" name="login-submit" id="login-submit"
+                                   class="btn btn-success" value="Log In" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div>
+						<span>New user? <a href="/" th:href="@{/registration}" class="reg-link">Register
+								here</a></span>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <a href="https://github.com/Retried" class="footer-content">&copy; Doga Company</a>
+    </footer>
+</body>
+</html>

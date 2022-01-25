@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kfejk by Retried</title>
+    <link rel="stylesheet" th:href="@{reset.css}"/>
+    <link rel="stylesheet" th:href="@{style.css}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="logo">
+            <a href="/">
+                <img th:src="@{logo.png}" alt="LOGO"/>
+            </a>
+        </div>
+        <div  class="login-logout">
+            <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn dark login">Wyloguj się</a>
+            <a sec:authorize="isAnonymous()" th:href="@{/login}" class="btn lime login">Zaloguj się</a>
+        </div>
+    </nav>
+    <main>
+        <section class="fake-panel-only-for-flex-purposes">
+        </section>
+        <section class="memes">
+            <div th:each = "imageGallery: ${images}" class="meme">
+                <div class="meme-user">
+                    <p class="meme-user-name" th:text="${imageGallery.name}"></p>
+                </div>
+                <div class="meme-content">
+                    <div class="meme-image">
+                        <img th:src="@{${'/image/display/'+ imageGallery.id}}"
+                             class="card img-fluid" style="width:300px" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="user-panel">
+            <div class="add-meme">
+                <a th:href="@{/add}" class="btn lime">Dodaj mema</a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <a href="https://github.com/Retried" class="footer-content">&copy; Doga Company</a>
+    </footer>
+</body>
+</html>

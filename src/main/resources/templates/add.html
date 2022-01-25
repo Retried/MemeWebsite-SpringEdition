@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kfejk by Retried</title>
+    <link rel="stylesheet" th:href="@{reset.css}"/>
+    <link rel="stylesheet" th:href="@{login.css}"/>
+    <link rel="stylesheet" th:href="@{style.css}"/>
+    <link rel="stylesheet" th:href="@{add-change-data.css}"/>
+    <link href='https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="logo">
+            <a href="/">
+                <img th:src="@{logo.png}" alt="LOGO"/>
+            </a>
+        </div>
+        <div class="login-logout">
+            <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn dark login">Wyloguj się</a>
+            <a sec:authorize="isAnonymous()" th:href="@{/login}" class="btn lime login">Zaloguj się</a>
+        </div>
+    </nav>
+    <div class="log">
+        <section class="memes">
+            <div class="meme">
+                <form th:action="@{/image/saveImageDetails}" enctype="multipart/form-data" method="POST">
+                    <div class="meme-title">
+                        <label>Name</label>
+                        <label for="name"><input type="text" class="form-control" placeholder="Product Name" id="name" name="name" required="required"></label>
+                        <label class="col-form-label">Image</label>
+                        <p id="error_name"></p>
+                        <input type="file" class="form-control" placeholder="" name="image" id="image" required="required">
+                        <p id="error_file"></p>
+                    <div class="meme-footer">
+                        <input type="submit" id="submit" class="btn btn-primary form-control" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer class="footer">
+        <a href="https://github.com/Retried" class="footer-content">&copy; Doga Company</a>
+    </footer>
+</body>
+</html>
